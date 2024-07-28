@@ -26,7 +26,7 @@ except Exception as e:
     st.stop()
 
 # Judul aplikasi
-st.title("Form Prediksi Tingkat Stres")
+st.title("Prediksi Tingkat Stres Mahasiswa/Pelajar")
 
 # Membuat form input
 st.header("Masukkan Data")
