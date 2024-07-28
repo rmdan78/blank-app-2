@@ -5,12 +5,7 @@ import pickle
 # Muat model
 
 # Memastikan semua modul yang diperlukan terinstal
-model_path = 'stress11.pkl'
-try:
-    with open(model_path, 'rb') as file:
-        model_data = pickle.load(file)
-
-# Judul aplikasi
+model1 = pickle.load(open('stress11.pkl', 'rb'))
 st.title("Form Prediksi Tingkat Stres")
 
 # Membuat form input
@@ -36,7 +31,7 @@ if st.button('Prediksi Tingkat Stres'):
     df_baru = pd.DataFrame(data_baru)
     st.dataframe(df_baru)
     # Membuat prediksi
-    prediksi = model.predict(df_baru)
+    prediksi = model1.predict(df_baru)
         # Menampilkan hasil prediksi
     st.success(f"Tingkat Stres Anda: {prediksi[0]}")
     
