@@ -5,7 +5,7 @@ import pickle
 # Muat model
 
 # Memastikan semua modul yang diperlukan terinstal
-model_path = 'model_stress (1).pkl'
+model_path = 'stress.pkl'
 try:
     with open(model_path, 'rb') as file:
         model_data = pickle.load(file)
