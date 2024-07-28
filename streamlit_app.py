@@ -30,7 +30,7 @@ if st.button('Prediksi Tingkat Stres'):
         'How many times a week you practice extracurricular activities 🎾?': [extracurricular_activities]
     }
     df_baru = pd.DataFrame(data_baru)
-    
+    st.dataframe(df_baru)
     # Membuat prediksi
    # prediksi = model.predict(df_baru)
     
