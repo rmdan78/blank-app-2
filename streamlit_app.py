@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 
 # Memuat model
-model_path = 'model_stress_gpt.pkl'
+model_path = 'model_stress_gptv2.pkl'
 try:
     with open(model_path, 'rb') as file:
         model_data = pickle.load(file)
