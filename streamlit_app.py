@@ -14,6 +14,9 @@ try:
 except FileNotFoundError:
     st.error(f"File model '{model_path}' tidak ditemukan. Pastikan file tersebut ada di direktori yang benar.")
     st.stop()
+except pickle.UnpicklingError:
+    st.error(f"File model '{model_path}' rusak atau tidak dapat dibaca.")
+    st.stop()
 except ModuleNotFoundError as e:
     st.error(f"Modul yang diperlukan oleh model tidak ditemukan: {e}")
     st.stop()
@@ -23,7 +26,6 @@ except KeyError:
 except Exception as e:
     st.error(f"Terjadi kesalahan saat memuat model: {e}")
     st.stop()
-
 # Judul aplikasi
 st.title("Form Prediksi Tingkat Stres")
 
