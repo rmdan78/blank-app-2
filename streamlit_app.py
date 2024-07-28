@@ -23,11 +23,11 @@ extracurricular_activities = st.number_input('How many times a week you practice
 if st.button('Prediksi Tingkat Stres'):
     # Data baru
     data_baru = {
-        'Sleep Quality': [sleep_quality],
-        'Headaches Frequency': [headaches_frequency],
-        'Academic Performance': [academic_performance],
-        'Study Load': [study_load],
-        'Extracurricular Activities': [extracurricular_activities]
+        'Kindly Rate your Sleep Quality 😴': [sleep_quality],
+        'How many times a week do you suffer headaches 🤕?': [headaches_frequency],
+        'How would you rate your academic performance 👩‍🎓?': [academic_performance],
+        'How would you rate your study load?': [study_load],
+        'How many times a week you practice extracurricular activities 🎾?': [extracurricular_activities]
     }
     df_baru = pd.DataFrame(data_baru)
     
