@@ -4,7 +4,28 @@ import pickle
 
 # Muat model
 
-model = pickle.load(open('model_stress.pkl', 'rb'))
+# Memastikan semua modul yang diperlukan terinstal
+try:
+    from sklearn.ensemble import RandomForestClassifier
+except ImportError as e:
+    st.error(f"Modul yang diperlukan tidak ditemukan: {e}")
+    st.stop()
+
+# Memuat model
+model_path = 'model_stress.pkl'
+try:
+    with open(model_path, 'rb') as file:
+        model = pickle.load(file)
+        expected_features = model['feature_names']
+except FileNotFoundError:
+    st.error(f"File model '{model_path}' tidak ditemukan. Pastikan file tersebut ada di direktori yang benar.")
+    st.stop()
+except ModuleNotFoundError as e:
+    st.error(f"Modul yang diperlukan oleh model tidak ditemukan: {e}")
+    st.stop()
+except KeyError:
+    st.error("Model tidak berisi informasi tentang nama fitur. Pastikan model dilatih dengan nama fitur yang disimpan.")
+    st.stop()
 
 # Judul aplikasi
 st.title("Form Prediksi Tingkat Stres")
