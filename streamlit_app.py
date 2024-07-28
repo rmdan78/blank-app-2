@@ -5,8 +5,8 @@ import pickle
 # Muat model
 
 # Memastikan semua modul yang diperlukan terinstal
-with open('model_stress (1).pkl', 'rb') as file:
-    model = pickle.load(file)
+
+model = pickle.load(open('model_stress (1).pkl', 'rb'))
 # Judul aplikasi
 st.title("Form Prediksi Tingkat Stres")
 
