@@ -33,11 +33,15 @@ st.header("Masukkan Data")
 # Input data
 
 st.markdown("Silakan Nilai Kualitas Tidur Anda 😴", unsafe_allow_html=True)
-sleep_quality = st.number_input('', min_value=1, max_value=5, step=1)
-headaches_frequency = st.number_input('Berapa kali dalam seminggu Anda menderita sakit kepala 🤕? <br> 1 = Tidak pernah, 2 = 1 s/d 3,  2 = 4 s/d 6,  4 = 7 s/d 9, 5 = Lebih Dari 10', min_value=1, max_value=5, step=1)
-academic_performance = st.number_input('Bagaimana Anda menilai kinerja akademik Anda 👩‍🎓? 1 = Bagus, 2 = Cukup Bagus, 3 = Cukup, 4 = Kurang Bagus, 5 = Tidak Bagus', min_value=1, max_value=5, step=1)
-study_load = st.number_input('Bagaimana Anda menilai beban studi Anda?  1 = Ringan, 2 = Cukup Ringan, 3 = Biasa, 4 = Cukup Berat, 5 = Berat', min_value=1, max_value=5, step=1)
-extracurricular_activities = st.number_input('Berapa kali dalam seminggu Anda berlatih kegiatan ekstrakurikuler 🎾? 1 = Tidak pernah, 2 = 1 s/d 3,  2 = 4 s/d 6,  4 = 7 s/d 9, 5 = Lebih Dari 10', min_value=0, max_value=7, step=1)
+sleep_quality = st.number_input('1 = Pulas, 2 = Cukup Pulas, 3 = Biasa Saja, 4 = Kurang Pulas, 5 = Tidak Pulas'', min_value=1, max_value=5, step=1')
+st.markdown("Berapa kali dalam seminggu Anda menderita sakit kepala 🤕?", unsafe_allow_html=True)
+headaches_frequency = st.number_input(' 1 = Tidak pernah, 2 = 1 s/d 3, 3 = 4 s/d 6, 4 = 7 s/d 9, 5 = Lebih Dari 10', min_value=1, max_value=5, step=1)
+st.markdown("Bagaimana Anda menilai kinerja akademik Anda 👩‍🎓?", unsafe_allow_html=True)
+academic_performance = st.number_input('1 = Bagus, 2 = Cukup Bagus, 3 = Cukup, 4 = Kurang Bagus, 5 = Tidak Bagus', min_value=1, max_value=5, step=1)
+st.markdown("Bagaimana Anda menilai beban studi Anda?", unsafe_allow_html=True)
+study_load = st.number_input('1 = Ringan, 2 = Cukup Ringan, 3 = Biasa, 4 = Cukup Berat, 5 = Berat', min_value=1, max_value=5, step=1)
+st.markdown("Berapa kali dalam seminggu Anda berlatih kegiatan ekstrakurikuler 🎾?", unsafe_allow_html=True)
+extracurricular_activities = st.number_input('1 = Tidak pernah, 2 = 1 s/d 3,  2 = 4 s/d 6,  4 = 7 s/d 9, 5 = Lebih Dari 10', min_value=0, max_value=7, step=1)
 
 # Tombol untuk membuat prediksi
 if st.button('Prediksi Tingkat Stres'):
