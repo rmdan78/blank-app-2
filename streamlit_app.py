@@ -30,9 +30,9 @@ st.title("Form Prediksi Tingkat Stres")
 
 # Membuat form input
 st.header("Masukkan Data")
-
 # Input data
-sleep_quality = st.number_input('Kindly Rate your Sleep Quality 😴', min_value=1, max_value=5, step=1)
+
+sleep_quality = st.number_input('Silakan Nilai Kualitas Tidur Anda 😴 1 = Bagus, 2 = Cukup Bagus, 3 = Cukup, 4 = Kurang Bagus, 5 = Tidak Bagus', min_value=0, max_value=5, step=1)
 headaches_frequency = st.number_input('How many times a week do you suffer headaches 🤕?', min_value=0, max_value=7, step=1)
 academic_performance = st.number_input('How would you rate your academic performance 👩‍🎓?', min_value=1, max_value=5, step=1)
 study_load = st.number_input('How would you rate your study load?', min_value=1, max_value=5, step=1)
