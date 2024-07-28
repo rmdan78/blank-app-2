@@ -32,7 +32,13 @@ if st.button('Prediksi Tingkat Stres'):
     df_baru = pd.DataFrame(data_baru)
     st.dataframe(df_baru)
     # Membuat prediksi
-    prediksi = model.predict(df_baru)
+     if list(df_baru.columns) != list(expected_features):
+        st.error(f"Kolom data tidak sesuai. Harap pastikan kolom data adalah: {list(expected_features)}")
+     else:
+        # Membuat prediksi
+        prediksi = model.predict(df_baru)
+        # Menampilkan hasil prediksi
+        st.success(f"Tingkat Stres Anda: {prediksi[0]}")
     
     # Menampilkan hasil prediksi
     st.success(f"Tingkat Stres Anda: {prediksi[0]}")
