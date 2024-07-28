@@ -2,10 +2,30 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-# Muat model
+# Memuat model
+model_path = 'model_stress_gpt.pkl'
+try:
+    with open(model_path, 'rb') as file:
+        model_data = pickle.load(file)
+        model = model_data['model']
+        expected_features = model_data['feature_names']
+except FileNotFoundError:
+    st.error(f"File model '{model_path}' tidak ditemukan. Pastikan file tersebut ada di direktori yang benar.")
+    st.stop()
+except pickle.UnpicklingError:
+    st.error(f"File model '{model_path}' rusak atau tidak dapat dibaca.")
+    st.stop()
+except ModuleNotFoundError as e:
+    st.error(f"Modul yang diperlukan oleh model tidak ditemukan: {e}")
+    st.stop()
+except KeyError:
+    st.error("Model tidak berisi informasi tentang nama fitur. Pastikan model dilatih dengan nama fitur yang disimpan.")
+    st.stop()
+except Exception as e:
+    st.error(f"Terjadi kesalahan saat memuat model: {e}")
+    st.stop()
 
-# Memastikan semua modul yang diperlukan terinstal
-model1 = pickle.load(open('stress11.pkl', 'rb'))
+# Judul aplikasi
 st.title("Form Prediksi Tingkat Stres")
 
 # Membuat form input
@@ -22,23 +42,24 @@ extracurricular_activities = st.number_input('How many times a week you practice
 if st.button('Prediksi Tingkat Stres'):
     # Data baru
     data_baru = {
-        'Kindly Rate your Sleep Quality 😴': [sleep_quality],
-        'How many times a week do you suffer headaches 🤕?': [headaches_frequency],
-        'How would you rate your academic performance 👩‍🎓?': [academic_performance],
-        'How would you rate your study load?':[study_load],
-        'How many times a week you practice extracurricular activities 🎾?': [extracurricular_activities]
+        'Sleep Quality': [sleep_quality],
+        'Headaches Frequency': [headaches_frequency],
+        'Academic Performance': [academic_performance],
+        'Study Load': [study_load],
+        'Extracurricular Activities': [extracurricular_activities]
     }
     df_baru = pd.DataFrame(data_baru)
-    st.dataframe(df_baru)
-    # Membuat prediksi
-    prediksi = model1.predict(df_baru)
-        # Menampilkan hasil prediksi
-    st.success(f"Tingkat Stres Anda: {prediksi[0]}")
     
-
-# Menampilkan DataFrame
-if 'dataframe' in st.session_state:
-    st.header("DataFrame Sebelumnya")
-    st.dataframe(st.session_state.dataframe)
-else:
-    st.info("Belum ada data yang dimasukkan.")
+    # Memastikan kolom sesuai dengan yang diharapkan oleh model
+    if list(df_baru.columns) != expected_features:
+        st.error(f"Kolom data tidak sesuai. Harap pastikan kolom data adalah: {expected_features}")
+    else:
+        try:
+            # Membuat prediksi
+            prediksi = model.predict(df_baru)
+            # Menampilkan hasil prediksi
+            st.success(f"Tingkat Stres Anda: {prediksi[0]}")
+        except ValueError as e:
+            st.error(f"Terjadi kesalahan saat membuat prediksi: {e}")
+        except Exception as e:
+            st.error(f"Terjadi kesalahan yang tidak terduga: {e}")
