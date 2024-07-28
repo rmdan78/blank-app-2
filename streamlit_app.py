@@ -33,7 +33,7 @@ st.header("Masukkan Data")
 # Input data
 
 st.markdown("Silakan Nilai Kualitas Tidur Anda 😴", unsafe_allow_html=True)
-sleep_quality = st.number_input('1 = Pulas, 2 = Cukup Pulas, 3 = Biasa Saja, 4 = Kurang Pulas, 5 = Tidak Pulas', min_value=1, max_value=5, step=1')
+sleep_quality = st.number_input('1 = Pulas, 2 = Cukup Pulas, 3 = Biasa Saja, 4 = Kurang Pulas, 5 = Tidak Pulas', min_value=1, max_value=5, step=1)
 st.markdown("Berapa kali dalam seminggu Anda menderita sakit kepala 🤕?", unsafe_allow_html=True)
 headaches_frequency = st.number_input(' 1 = Tidak pernah, 2 = 1 s/d 3, 3 = 4 s/d 6, 4 = 7 s/d 9, 5 = Lebih Dari 10', min_value=1, max_value=5, step=1)
 st.markdown("Bagaimana Anda menilai kinerja akademik Anda 👩‍🎓?", unsafe_allow_html=True)
