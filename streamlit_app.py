@@ -33,7 +33,7 @@ st.header("Masukkan Data")
 # Input data
 
 sleep_quality = st.number_input('Silakan Nilai Kualitas Tidur Anda 😴 1 = Bagus, 2 = Cukup Bagus, 3 = Cukup, 4 = Kurang Bagus, 5 = Tidak Bagus', min_value=1, max_value=5, step=1)
-headaches_frequency = st.number_input('Berapa kali dalam seminggu Anda menderita sakit kepala 🤕? '
+headaches_frequency = st.number_input('Berapa kali dalam seminggu Anda menderita sakit kepala 🤕? /n'
                                       ' = Tidak pernah, 2 = 1 s/d 3,  2 = 4 s/d 6,  4 = 7 s/d 9, 5 = Lebih Dari 10', min_value=1, max_value=5, step=1)
 academic_performance = st.number_input('Bagaimana Anda menilai kinerja akademik Anda 👩‍🎓? 1 = Bagus, 2 = Cukup Bagus, 3 = Cukup, 4 = Kurang Bagus, 5 = Tidak Bagus', min_value=1, max_value=5, step=1)
 study_load = st.number_input('Bagaimana Anda menilai beban studi Anda?  1 = Ringan, 2 = Cukup Ringan, 3 = Biasa, 4 = Cukup Berat, 5 = Berat', min_value=1, max_value=5, step=1)
