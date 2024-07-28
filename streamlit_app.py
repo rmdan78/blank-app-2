@@ -5,8 +5,25 @@ import pickle
 # Muat model
 
 # Memastikan semua modul yang diperlukan terinstal
+model_path = 'model_stress (1).pkl'
+try:
+    with open(model_path, 'rb') as file:
+        model_data = pickle.load(file)
+        model = model_data['model']
+        expected_features = model_data['feature_names']
+except FileNotFoundError:
+    st.error(f"File model '{model_path}' tidak ditemukan. Pastikan file tersebut ada di direktori yang benar.")
+    st.stop()
+except ModuleNotFoundError as e:
+    st.error(f"Modul yang diperlukan oleh model tidak ditemukan: {e}")
+    st.stop()
+except KeyError:
+    st.error("Model tidak berisi informasi tentang nama fitur. Pastikan model dilatih dengan nama fitur yang disimpan.")
+    st.stop()
+except Exception as e:
+    st.error(f"Terjadi kesalahan saat memuat model: {e}")
+    st.stop()
 
-model = pickle.load(open('model_stress (1).pkl', 'rb'))
 # Judul aplikasi
 st.title("Form Prediksi Tingkat Stres")
 
