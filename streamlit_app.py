@@ -63,6 +63,7 @@ if st.button('Prediksi Tingkat Stres'):
             # Membuat prediksi
             prediksi = model.predict(df_baru)
             # Menampilkan hasil prediksi
+            st.markdown("Prediksi tingkat stres 1 s/d 5", unsafe_allow_html=True)
             st.success(f"Tingkat Stres Anda: {prediksi[0]}")
         except ValueError as e:
             st.error(f"Terjadi kesalahan saat membuat prediksi: {e}")
